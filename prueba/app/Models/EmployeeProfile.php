@@ -17,6 +17,7 @@ class EmployeeProfile extends Model
         'bio',
         'phone',
         'address',
+        'department_id',  // Añade department_id a los fillables
     ];
 
     /**
@@ -25,5 +26,13 @@ class EmployeeProfile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the department that the employee belongs to.
+     */
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 }
