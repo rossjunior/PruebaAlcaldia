@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('Información del perfil') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Actualiza tus datos.") }}
         </p>
     </header>
 
@@ -45,6 +45,43 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <div>
+            <x-input-label for="position" :value="__('Position')" />
+            <x-text-input id="position" name="position" type="text" class="mt-1 block w-full" :value="old('position', $user->position)" autocomplete="position" />
+            <x-input-error class="mt-2" :messages="$errors->get('position')" />
+        </div>
+
+        <div>
+            <x-input-label for="department_id" :value="__('Department')" />
+            <select id="department_id" name="department_id" class="mt-1 block w-full">
+                <option value="" disabled selected>Select Department</option>
+                @foreach($departments as $department)
+                <option value="{{ $department->id }}" >
+                    {{ $department->name }}
+                </option>
+                @endforeach
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('department_id')" />
+        </div>
+
+        <div>
+            <x-input-label for="phone_number" :value="__('Phone Number')" />
+            <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 block w-full" :value="old('phone_number', $user->phone_number)" autocomplete="phone_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
+        </div>
+
+        <div>
+            <x-input-label for="linkedin_profile" :value="__('LinkedIn Profile')" />
+            <x-text-input id="linkedin_profile" name="linkedin_profile" type="text" class="mt-1 block w-full" :value="old('linkedin_profile', $user->linkedin_profile)" autocomplete="linkedin_profile" />
+            <x-input-error class="mt-2" :messages="$errors->get('linkedin_profile')" />
+        </div>
+
+        <div>
+            <x-input-label for="profession" :value="__('Profession')" />
+            <x-text-input id="profession" name="profession" type="text" class="mt-1 block w-full" :value="old('profession', $user->profession)" autocomplete="profession" />
+            <x-input-error class="mt-2" :messages="$errors->get('profession')" />
         </div>
 
         <div class="flex items-center gap-4">

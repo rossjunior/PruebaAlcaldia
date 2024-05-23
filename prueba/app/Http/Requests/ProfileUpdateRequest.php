@@ -18,6 +18,12 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'position' => ['nullable', 'string', 'max:255'],
+            'department_id' => ['nullable', 'integer', 'exists:departments,id'], 
+            'phone_number' => ['nullable', 'string', 'max:20'],
+            //'date_of_birth' => ['nullable', 'date'], 
+            'linkedin_profile' => ['nullable', 'string', 'max:255'], 
+            'profession' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

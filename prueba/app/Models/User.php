@@ -15,6 +15,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'position',
+        'department_id',
+        'phone_number',
+        'date_of_birth',
+        'linkedin_profile',
+        'profession',
     ];
 
     protected $hidden = [
@@ -27,11 +33,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /**
-     * Get the employee profile associated with the user.
-     */
-    public function employeeProfile()
+    public function department()
     {
-        return $this->hasOne(EmployeeProfile::class);
+        return $this->belongsTo(Department::class);
     }
+
 }

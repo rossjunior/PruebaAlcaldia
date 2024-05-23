@@ -12,12 +12,11 @@ class Department extends Model
     protected $fillable = [
         'name',
     ];
+    protected $primaryKey = 'id';
 
-    /**
-     * Get the employee profiles for the department.
-     */
-    public function employeeProfiles()
+    public function users()
     {
-        return $this->hasMany(EmployeeProfile::class);
+        return $this->hasMany(User::class);
     }
+
 }
